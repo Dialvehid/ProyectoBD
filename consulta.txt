@@ -10,16 +10,16 @@ tel int unique not null,
 constraint dpi check( cui <= 9999999999999 and cui >0)
 )
 
-create table embarque(
-cod int primary key not null identity(1,1),
-cui int not null,
-reseva int,
-constraint fk_res foreign key(reseva) references resevas(cod)
-)
-
 create table resevas(
 cod bigint primary key identity(1,1) not null,
 nasientos int check(nasientos>0) not null
+)
+
+create table embarque(
+cod int primary key not null identity(1,1),
+cui int not null,
+reseva bigint,
+constraint fk_res foreign key(reseva) references resevas(cod)
 )
 
 create table aviones(
