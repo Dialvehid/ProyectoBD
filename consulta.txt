@@ -1,7 +1,7 @@
 
 create table cliente(
-id bigint primary key not NULL,
-cui bigint not null,
+id bigint primary key not NULL identity(1,1),
+cui bigint not null unique,
 nombres nvarchar (50) not null,
 apellidos nvarchar (50) not null,
 direccion nvarchar (100) not null,
@@ -14,6 +14,12 @@ create table embarque(
 cod int primary key not null identity(1,1),
 cui int not null,
 reseva int,
+constraint fk_res foreign key(reseva) references resevas(cod)
+)
+
+create table resevas(
+cod bigint primary key identity(1,1) not null,
+nasientos int check(nasientos>0) not null
 )
 
 create table aviones(
