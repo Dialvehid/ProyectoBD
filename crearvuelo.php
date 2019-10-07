@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Registrar Vuelo</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -57,7 +58,7 @@
                 Aeropuertos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearavion.php">Registrar Nuevo Aeropuerto</a>
+              <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
                 <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
               </div>
             </li>
@@ -75,6 +76,77 @@
           </div>
         </nav>
     
+  <!-- Formulario para registro de nuevo cliente -->
+  <form method="POST" name="crearCliente" enctype="multipart/form-data">
+          <h2 class="text-primary"> Nuevo Vuelo</h2>  
+          <div class="form-group">
+            <label for="FechaSalida">Fecha Salida</label>
+            <input 
+              type="date" 
+              class="form-control" 
+              id="fechaSalida" 
+              name="fecha_salida"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <label for="FechaLlegada">Fecha Llegada</label>
+            <input 
+              type="date" 
+              class="form-control" 
+              id="fechaLlegada" 
+              name="fecha_llegada" 
+              required
+            >
+          </div>
+          <div class="form-group">
+            <label for="AeropuertoSalida">Aeropuerto Salida</label>
+            <select name="aeropuertoSalida" 
+              id="aeropuerto_salida" 
+              class="form-control">
+              <option value="1" class="form-control">Aurora</option>
+              <option value="2" class="form-control">Otro Aeropuerto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="AeropuertoDestino">Aeropuerto Destino</label>
+            <select name="aeropuertoDestino" 
+              id="aeropuerto_destino" 
+              class="form-control">
+              <option value="1" class="form-control">MexicoAeropuerto</option>
+              <option value="2" class="form-control">DubaiAeropuerto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Avion">Avion</label>
+            <select name="avion" 
+              id="Avion" 
+              class="form-control">
+              <option value="1" class="form-control">1</option>
+              <option value="2" class="form-control">2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="NumeroEmbarque">No. Embarque</label>
+            <select name="NumeroEmbarque" 
+              id="embarque" 
+              class="form-control">
+              <option value="1" class="form-control">1</option>
+              <option value="2" class="form-control">2</option>
+            </select>
+          </div>
+          <div class="form-group">
+              <!-- Boton para enviar los datos a la base de datos -->
+              <a onclick="return confirm('Esta seguro de registrar el vuelo?')">
+                <button type="submit" 
+                value="Registrar Vuelo" 
+                name ="send" 
+                class="btn btn-info">Registrar Vuelo </button>
+              </a>
+          </div>
+        </form>
+    
+    <!-- Final del index -->
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

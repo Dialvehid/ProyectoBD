@@ -57,7 +57,7 @@
                 Aeropuertos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearavion.php">Registrar Nuevo Aeropuerto</a>
+                <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
                 <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
               </div>
             </li>

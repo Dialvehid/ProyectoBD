@@ -48,8 +48,8 @@
                 Aviones
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearavion.php">Registrar Nuevo Avion</a>
-                <a class="dropdown-item" href="consultaravion.php">Consultar Aviones</a>
+                <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
+                <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
               </div>
             </li>
             <li class="nav-item dropdown">

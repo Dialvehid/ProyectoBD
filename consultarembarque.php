@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Consultar Embarque</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="index.jsp">Aeropuerto</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +58,7 @@
                 Aeropuertos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearavion.php">Registrar Nuevo Aeropuerto</a>
+                <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
                 <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
               </div>
             </li>
@@ -74,7 +75,8 @@
             </ul>
           </div>
         </nav>
-    
+<body>
+
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

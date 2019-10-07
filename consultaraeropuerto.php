@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Consultar Reserva</title>
+    <title>Consultar Aeropuertos</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -57,7 +58,7 @@
                 Aeropuertos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
+              <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
                 <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
               </div>
             </li>
@@ -74,9 +75,8 @@
             </ul>
           </div>
         </nav>
-    
 
-    <script src="js/jquery.js"></script>
+        <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

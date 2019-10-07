@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Cliente</title>
+    <title>Crear Aeropuerto</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -57,7 +57,7 @@
           Aeropuertos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
+                <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
                 <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
         </div>
       </li>
@@ -77,75 +77,36 @@
 <body>
   <!-- Formulario para registro de nuevo cliente -->
   <form method="POST" name="crearCliente" enctype="multipart/form-data">
-          <h2 class="text-primary"> Nuevo Cliente</h2>  
+          <h2 class="text-primary"> Nuevo Aeropuerto</h2>  
           <div class="form-group">
-            <label for="CampoCui">CUI</label>
+            <label for="CampoAeropuerto">Nombre Aeropuerto</label>
             <input 
               type="text" 
               class="form-control" 
-              id="cuiCliente" 
-              name="cui_cliente" 
-              placeholder="2998631820101" 
+              id="nombreAeropuerto" 
+              name="nombre_aeropuerto" 
+              placeholder="Aurora" 
               required
             >
           </div>
           <div class="form-group">
-            <label for="NombreCliente">Nombres del Cliente</label>
+            <label for="PaisAeropuerto">País del Aeropuerto</label>
             <input 
               type="text" 
               class="form-control" 
-              id="nombreCliente" 
-              name="nombre_cliente" 
-              placeholder="Cristian Gerardo"
+              id="paisAeropuerto" 
+              name="pais_aeropuerto" 
+              placeholder="Guatemala"
             >
           </div>
-          <div class="form-group">
-            <label for="ApellidoCliente">Apellidos del Cliente</label>
-            <input 
-              type="text" 
-              class="form-control" 
-              id="apellidoCliente" 
-              name="apellido_cliente" 
-              placeholder="Hernandez Barrios" 
-            >
-          </div>
-          <div class="form-group">
-            <label for="DireccionCliente">Dirección del Cliente</label>
-            <input 
-              type="text" 
-              class="form-control" 
-              id="direccionCliente" 
-              name="direccion_cliente" 
-              placeholder="Zona x, Avenida x, Ciudad x"
-            >
-          </div>
-          <div class="form-group">
-            <label for="DireccionCliente">Tarjeta Crédito Cliente</label>
-            <input 
-              type="text" 
-              class="form-control" 
-              id="tarjetaCliente" 
-              name="tarjeta_cliente" 
-              placeholder="4515458758156487"
-            >
-          </div>
-          <div class="form-group">
-            <label for="DireccionCliente">Telefono del Cliente</label>
-            <input 
-              type="text" 
-              class="form-control" 
-              id="telefonoCliente" 
-              name="telefono_cliente" 
-              placeholder="35351567"
-            >
-          </div>
+         
           <div class="form-group">
               <!-- Boton para enviar los datos a la base de datos -->
-              <a onclick="return confirm('Esta seguro de registrar al cliente?')">
+              <a onclick="return confirm('Esta seguro de registrar el aeropuerto?')">
                 <button type="submit" 
                 value="Registrar Cliente" 
                 name ="send" 
-                class="btn btn-info">Registrar Cliente </button>
+                class="btn btn-info">Registrar Aeropuerto </button>
               </a>
           </div>
         </form>

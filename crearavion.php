@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Crear Avion</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -57,7 +58,7 @@
                 Aeropuertos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearavion.php">Registrar Nuevo Aeropuerto</a>
+              <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
                 <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
               </div>
             </li>
@@ -74,7 +75,31 @@
             </ul>
           </div>
         </nav>
-    
+        <!-- Formulario para registro de nuevo cliente -->
+        <form method="POST" name="crearReserva" enctype="multipart/form-data">
+      <h2 class="text-primary"> Nuevo Avion</h2>  
+      <div class="form-group">
+        <label for="campoPlazas">No. Plazas</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="plazas" 
+          name="plazas_avion" 
+          placeholder="4" 
+          required
+        >
+      </div>
+      <div class="form-group">
+          <!-- Boton para enviar los datos a la base de datos -->
+          <a onclick="return confirm('Esta seguro de registrar el avion?')">
+            <button type="submit" 
+            value="Registrar Cliente" 
+            name ="send" 
+            class="btn btn-info">Registrar Avion </button>
+          </a>
+      </div>
+    </form>
+
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

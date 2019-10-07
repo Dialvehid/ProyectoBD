@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Crear Reserva</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="index.jsp">Aeropuerto</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@
                 Aeropuertos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearavion.php">Registrar Nuevo Aeropuerto</a>
+              <a class="dropdown-item" href="crearaeropuerto.php">Registrar Nuevo Aeropuerto</a>
                 <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
               </div>
             </li>
@@ -74,8 +74,33 @@
             </ul>
           </div>
         </nav>
-    
+  <body>
+    <!-- Formulario para registro de nuevo cliente -->
+    <form method="POST" name="crearReserva" enctype="multipart/form-data">
+      <h2 class="text-primary"> Nueva Reserva</h2>  
+      <div class="form-group">
+        <label for="CampoCui">No. Asientos</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="asientos" 
+          name="asientos_reserva" 
+          placeholder="4" 
+          required
+        >
+      </div>
+      <div class="form-group">
+          <!-- Boton para enviar los datos a la base de datos -->
+          <a onclick="return confirm('Esta seguro de registrar la reserva?')">
+            <button type="submit" 
+            value="Registrar Cliente" 
+            name ="send" 
+            class="btn btn-info">Registrar Reseva </button>
+          </a>
+      </div>
+    </form>
 
+<!-- Final del index -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
