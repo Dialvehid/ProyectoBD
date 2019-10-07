@@ -14,15 +14,15 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">Inicio<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../index.php">Inicio<span class="sr-only">(current)</span></a>
               </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Clientes
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearcliete.php">Crear Nuevo Cliente</a>
-                <a class="dropdown-item" href="consultarcliente.php">Consultar Clientes</a>
+                <a class="dropdown-item" href="views/crearcliete.php">Crear Nuevo Cliente</a>
+                <a class="dropdown-item" href="views/consultarcliente.php">Consultar Clientes</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -30,8 +30,8 @@
                 Reservas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearreserva.php">Crear Nueva Reserva</a>
-                <a class="dropdown-item" href="consultarreserva.php">Consultar Reservas</a>
+                <a class="dropdown-item" href="views/crearreserva.php">Crear Nueva Reserva</a>
+                <a class="dropdown-item" href="views/consultarreserva.php">Consultar Reservas</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -39,8 +39,8 @@
                 Embarques
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearembarque.php">Crear Nuevo Embarque</a>
-                <a class="dropdown-item" href="consultarembarque.php">Consultar Embarques</a>
+                <a class="dropdown-item" href="views/crearembarque.php">Crear Nuevo Embarque</a>
+                <a class="dropdown-item" href="views/consultarembarque.php">Consultar Embarques</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -48,8 +48,8 @@
                 Aviones
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearavion.php">Registrar Nuevo Avion</a>
-                <a class="dropdown-item" href="consultaravion.php">Consultar Aviones</a>
+                <a class="dropdown-item" href="views/crearavion.php">Registrar Nuevo Avion</a>
+                <a class="dropdown-item" href="views/consultaravion.php">Consultar Aviones</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -57,8 +57,8 @@
                 Aeropuertos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearavion.php">Registrar Nuevo Aeropuerto</a>
-                <a class="dropdown-item" href="consultaraeropuerto.php">Consultar Aeropuertos</a>
+                <a class="dropdown-item" href="views/crearavion.php">Registrar Nuevo Aeropuerto</a>
+                <a class="dropdown-item" href="views/consultaraeropuerto.php">Consultar Aeropuertos</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -66,8 +66,8 @@
                 Vuelos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearvuelo.php">Registrar Nuevo Vuelo</a>
-                <a class="dropdown-item" href="consultarvuelo.php">Consultar Vuelos</a>
+                <a class="dropdown-item" href="views/crearvuelo.php">Registrar Nuevo Vuelo</a>
+                <a class="dropdown-item" href="views/consultarvuelo.php">Consultar Vuelos</a>
               </div>
             </li>      
 
