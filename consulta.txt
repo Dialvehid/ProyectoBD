@@ -1,12 +1,13 @@
 
 create table cliente(
-cui bigint primary key not null,
+id bigint primary key not NULL,
+cui bigint not null,
 nombres nvarchar (50) not null,
 apellidos nvarchar (50) not null,
 direccion nvarchar (100) not null,
 tjtC nvarchar (20) not null,
 tel int unique not null,
-constraint dpi check( cui <= 9999999999999 and cui >0),
+constraint dpi check( cui <= 9999999999999 and cui >0)
 )
 
 create table embarque(
