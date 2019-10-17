@@ -1,7 +1,6 @@
 
 create table cliente(
-id bigint primary key not NULL identity(1,1),
-cui bigint not null unique,
+cui bigint primary key not null unique,
 nombres nvarchar (50) not null,
 apellidos nvarchar (50) not null,
 direccion nvarchar (100) not null,
@@ -47,6 +46,7 @@ constraint fk_avion foreign key(avion) references aviones(cod),
 constraint fkembar foreign key(embar) references embarque(cod)
 )
 
+/*
 select
 	c.nombres+' '+c.apellidos as nombre_completo, v.cod as cod_vuelo, asa.nombre as origen, alle.nombre as destino, v.fsale as salida, v.fllega as llegada
 from 
@@ -61,3 +61,26 @@ inner join aeropuerto as asa
 on v.aesale=asa.cod 
 inner join aeropuerto as alle
 on  v.aellega=alle.cod
+*/
+
+CREATE PROCEDURE VISTA(
+@cui bigint)
+AS
+	SELECT V.*
+	FROM VUELO AS V
+		JOIN embarque as E
+		on V.embar=E.cod
+		JOIN cliente as c
+		on E.cui=c.cui
+	WHERE c.cui=@cui
+
+ALTER PROCEDURE VISTA
+@cui bigint
+as
+	SELECT *
+	FROM VUELO AS V
+	JOIN embarque as E
+	on V.embar=E.cod
+	JOIN cliente as c
+	on E.cui=c.cui
+	WHERE c.cui=@cui
