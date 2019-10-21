@@ -1,0 +1,17 @@
+form{
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 10px 20px;
+    background:  #e5e7e9 ;
+    border-radius: 8px;
+}
+
+.ocultar{
+    display: none;
+    visibility: hidden;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
