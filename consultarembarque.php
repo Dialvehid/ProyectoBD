@@ -1,3 +1,13 @@
+<?php 
+  require 'php/conexion_sql_server.php';
+  $sql = "SELECT e.cod AS codigo_embarque,
+    c.cui AS cui, e.reseva AS reserva
+   FROM embarque AS e INNER JOIN cliente AS c 
+   ON e.cui = c.id";
+  $statement = $conn->prepare($sql);
+  $statement->execute();
+  $embarques = $statement->fetchAll(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,6 +85,26 @@
             </ul>
           </div>
         </nav>
+
+        <table class="table table-bordered" style="width: 75% !important; margin:3% auto;">
+        <tr>
+          <th>Código de Embarque</th>
+          <th>Código CUI Asignado</th>
+          <th>Código de Reserva</th>
+          <th>Eliminar</th>
+        </tr>
+        <?php foreach($embarques as $embarque): ?>
+        <tr>
+          <td><?= $embarque->codigo_embarque; ?></td>
+          <td><?= $embarque->cui; ?></td>
+          <td><?= $embarque->reserva; ?></td>
+          <td><button type="button" class="btn btn-danger"><a onclick="return confirm('Esta seguro de eliminar el embarque?')" href="php/eliminarembarque.php?borrar=<?php echo $embarque->codigo_embarque ?>"> Eliminar </button>  </td></a>
+        </tr>
+        <?php endforeach; ?>
+      
+      
+      </table>
+
 <body>
 
 

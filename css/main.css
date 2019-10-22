@@ -5,3 +5,13 @@ form{
     background:  #e5e7e9 ;
     border-radius: 8px;
 }
+
+.ocultar{
+    display: none;
+    visibility: hidden;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}

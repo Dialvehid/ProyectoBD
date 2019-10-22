@@ -1,3 +1,4 @@
+<?php require 'php/createavion.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,7 +94,7 @@
           <!-- Boton para enviar los datos a la base de datos -->
           <a onclick="return confirm('Esta seguro de registrar el avion?')">
             <button type="submit" 
-            value="Registrar Cliente" 
+            value="Registrar Avion" 
             name ="send" 
             class="btn btn-info">Registrar Avion </button>
           </a>

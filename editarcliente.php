@@ -1,10 +1,27 @@
 <?php 
-  require 'php/conexion_sql_server.php';
-  $sql = "SELECT id, cui, nombres, apellidos, direccion, tjtC, tel FROM cliente";
-  $statement = $conn->prepare($sql);
-  $statement->execute();
-  $clientes = $statement->fetchAll(PDO::FETCH_OBJ);
+    require 'php/conexion_sql_server.php';
+    require 'php/editcliente.php';
+
+    if(isset($_GET['editar'])){
+        $cui_editar = $_GET['editar'];
+
+        $sql = "SELECT * FROM cliente WHERE id = '$cui_editar'";
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+        $clientes = $statement->fetchAll(PDO::FETCH_OBJ);
+    }
+    foreach($clientes as $cliente):
+      $id = $cliente->id;
+      $cui = $cliente->cui;
+      $nombres = $cliente->nombres;
+      $apellidos = $cliente->apellidos;
+      $direccion = $cliente->direccion;
+      $tarjeta = $cliente->tjtC;
+      $telefono = $cliente->tel;
+    endforeach;
+    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,34 +100,89 @@
           </div>
         </nav>
 
-      <table class="table table-bordered" style="width: 75% !important; margin:3% auto;">
-        <tr>
-          <th>CUI</th>
-          <th>Nombres</th>
-          <th>Apellidos</th>
-          <th>Direccion</th>
-          <th>Tarjeta de Credito</th>
-          <th>Celular</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
-        </tr>
-        <?php foreach($clientes as $cliente): ?>
-        <tr>
-          <td><?= $cliente->cui; ?></td>
-          <td><?= $cliente->nombres; ?></td>
-          <td><?= $cliente->apellidos; ?></td>
-          <td><?= $cliente->direccion; ?></td>
-          <td><?= $cliente->tjtC; ?></td>
-          <td><?= $cliente->tel; ?></td>
-          <td> <button type="button" class="btn btn-warning"><a href="editarcliente.php?editar=<?php echo $cliente->id ?>"> Editar </button>  </td></a>
-          <td><button type="button" class="btn btn-danger"><a onclick="return confirm('Esta seguro de eliminar al cliente?')" href="php/borrarcliente.php?borrar=<?php echo $cliente->id ?>"> Eliminar </button>  </td></a>
-        </tr>
-        <?php endforeach; ?>
-      
-      
-      </table>
+        <form method="POST" name="editarCliente" enctype="multipart/form-data">
+          <h2 class="text-primary"> Editar Cliente</h2>  
+          <div class="form-group">
+            <label for="CampoCui">CUI</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="cuiCliente" 
+              name="cui_cliente" 
+              value="<?php echo $cui; ?>"
+            >
+          </div>
+          <div class="form-group">
+            <label for="NombreCliente">Nombres del Cliente</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="nombreCliente" 
+              name="nombre_cliente" 
+              value="<?php echo $nombres; ?>"
+            >
+          </div>
+          <div class="form-group">
+            <label for="ApellidoCliente">Apellidos del Cliente</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="apellidoCliente" 
+              name="apellido_cliente"  
+              value="<?php echo $apellidos; ?>"
+            >
+          </div>
+          <div class="form-group">
+            <label for="DireccionCliente">Dirección del Cliente</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="direccionCliente" 
+              name="direccion_cliente" 
+              value="<?php echo $direccion; ?>"
+            >
+          </div>
+          <div class="form-group">
+            <label for="DireccionCliente">Tarjeta Crédito Cliente</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="tarjetaCliente" 
+              name="tarjeta_cliente" 
+              value="<?php echo $tarjeta; ?>"
+            >
+          </div>
+          <div class="form-group">
+            <label for="DireccionCliente">Telefono del Cliente</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="telefonoCliente" 
+              name="telefono_cliente"
+              value="<?php echo $telefono; ?>"
+            >
+          </div>
+          <div class="form-group ocultar">
+            <input 
+              type="text" 
+              class="form-control ocultar" 
+              id="telefonoCliente" 
+              name="id"
+              value="<?php echo $id; ?>"
+            >
+          </div>
+          <div class="form-group">
+              <!-- Boton para enviar los datos a la base de datos -->
+              <a onclick="return confirm('Esta seguro de editar al cliente?')" >
+                <button type="submit" 
+                value="Editar Cliente" 
+                name ="send" 
+                class="btn btn-info">Editar Cliente </button>
+              </a>
+          </div>
+          
+        </form>
     
-
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>

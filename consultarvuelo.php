@@ -1,9 +1,27 @@
+<?php 
+  require 'php/conexion_sql_server.php';
+  $sql = "SELECT 
+         v.cod AS Codigo_Vuelo,
+         v.aesale AS Aeropuerto_Salida,
+         v.aellega AS Aeropuerto_Llegada,
+         v.fsale AS Fecha_Salida, 
+         v.fllega AS Fecha_Llegada,
+         v.embar AS Codigo_Embarque,
+         v.avion AS Codigo_Avion
+         FROM vuelo AS v INNER JOIN aeropuerto AS a
+         ON (v.aesale = a.cod)   ";
+  $statement = $conn->prepare($sql);
+  $statement->execute();
+  $vuelos = $statement->fetchAll(PDO::FETCH_OBJ);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Consultar Vuelo</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -74,6 +92,35 @@
             </ul>
           </div>
         </nav>
+
+        
+        <table class="table table-bordered" style="width: 75% !important; margin:3% auto;">
+        <tr>
+          <th>Codigo Vuelo</th>
+          <th>Aeropuerto Salida</th>
+          <th>Aeropuerto Llegada</th>
+          <th>Fecha Salida</th>
+          <th>Fecha Llegada</th>
+          <th>Código de Embarque</th>
+          <th>Código de Avion</th>
+          <th>Eliminar</th>
+        </tr>
+        <?php foreach($vuelos as $vuelo): ?>
+        <tr>
+        
+          <td><?= $vuelo->Codigo_Vuelo; ?></td>
+          <td><?= $vuelo->Aeropuerto_Salida; ?></td>
+          <td><?= $vuelo->Aeropuerto_Llegada; ?></td>
+          <td><?= $vuelo->Fecha_Salida; ?></td>
+          <td><?= $vuelo->Fecha_Llegada; ?></td>
+          <td><?= $vuelo->Codigo_Embarque; ?></td>
+          <td><?= $vuelo->Codigo_Avion; ?></td>
+          <td><button type="button" class="btn btn-danger"><a onclick="return confirm('Esta seguro de eliminar el vuelo?')" href="php/eliminarvuelo.php?borrar=<?php echo $vuelo->Codigo_Vuelo ?>"> Eliminar </button>  </td></a>
+        </tr>
+        <?php endforeach; ?>
+      
+      
+      </table>
     
 
     <script src="js/jquery.js"></script>

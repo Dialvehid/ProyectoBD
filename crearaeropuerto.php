@@ -1,3 +1,5 @@
+<?php require 'php/createaeropuerto.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

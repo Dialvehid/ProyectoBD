@@ -1,3 +1,16 @@
+<?php 
+  require 'php/conexion_sql_server.php';
+  require 'php/createembarque.php';
+  $sql = "SELECT id, cui FROM cliente";
+  $statement = $conn->prepare($sql);
+  $statement->execute();
+  $clientes = $statement->fetchAll(PDO::FETCH_OBJ);
+
+  $sql2 = "SELECT cod FROM resevas";
+  $statement2 = $conn->prepare($sql2);
+  $statement2->execute();
+  $reservas = $statement2->fetchAll(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,25 +93,27 @@
           <h2 class="text-primary"> Nuevo Embarque</h2>  
           <div class="form-group">
             <label for="CampoCui">CUI</label><br>
-            <select name="cui_cliente" id="cui" >
-              <option value="1">2998631920101</option>
-              <option value="2">3216510</option>
+            <select name="cui_cliente" id="cui" class="form-control">
+            <?php foreach($clientes as $cliente): ?> 
+              <option value="<?= $cliente->id; ?>"><?= $cliente->cui; ?></option>
+            <?php endforeach; ?> 
             </select>
           </div>
           <div class="form-group">
             <label for="NombreCliente">Número de Reservación</label><br>
-            <select name="reserva_cliente" id="reservacion" >
-              <option value="1">1</option>
-              <option value="2">2</option>
+            <select name="reserva_cliente" id="reservacion" class="form-control" >
+              <?php foreach($reservas as $reserva): ?>
+                <option value="<?= $reserva->cod; ?>"><?= $reserva->cod; ?></option>
+              <?php endforeach; ?>
             </select>
           </div>
           <div class="form-group">
               <!-- Boton para enviar los datos a la base de datos -->
-              <a onclick="return confirm('Esta seguro de registrar el emarque?')">
+              <a onclick="return confirm('Esta seguro de registrar el Embarque?')">
                 <button type="submit" 
                 value="Registrar Cliente" 
                 name ="send" 
-                class="btn btn-info">Registrar Emarque </button>
+                class="btn btn-info">Registrar Embarque </button>
               </a>
           </div>
         </form>

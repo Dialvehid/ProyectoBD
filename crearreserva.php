@@ -1,3 +1,4 @@
+<?php require 'php/createreserva.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +96,7 @@
             <button type="submit" 
             value="Registrar Cliente" 
             name ="send" 
-            class="btn btn-info">Registrar Reseva </button>
+            class="btn btn-info">Registrar Reserva </button>
           </a>
       </div>
     </form>

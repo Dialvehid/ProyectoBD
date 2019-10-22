@@ -1,9 +1,17 @@
+<?php 
+  require 'php/conexion_sql_server.php';
+  $sql = "SELECT cod, nasientos FROM resevas";
+  $statement = $conn->prepare($sql);
+  $statement->execute();
+  $reservas = $statement->fetchAll(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Consultar Reserva</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -74,6 +82,25 @@
             </ul>
           </div>
         </nav>
+
+        <table class="table table-bordered" style="width: 75% !important; margin:3% auto;">
+        <tr>
+          <th>Código Reserva</th>
+          <th>Número de Asientos</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+        <?php foreach($reservas as $reserva): ?>
+        <tr>
+          <td><?= $reserva->cod; ?></td>
+          <td><?= $reserva->nasientos; ?></td>
+          <td> <button type="button" class="btn btn-warning"><a href="editarreserva.php?editar=<?php echo $reserva->cod ?>"> Editar </button>  </td></a>
+          <td><button type="button" class="btn btn-danger"><a onclick="return confirm('Esta seguro de eliminar la reserva?')" href="php/eliminarreserva.php?borrar=<?php echo $reserva->cod ?>"> Eliminar </button>  </td></a>
+        </tr>
+        <?php endforeach; ?>
+      
+      
+      </table>
     
 
     <script src="js/jquery.js"></script>

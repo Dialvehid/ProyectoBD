@@ -1,3 +1,10 @@
+<?php 
+  require 'php/conexion_sql_server.php';
+  $sql = "SELECT * FROM aeropuerto";
+  $statement = $conn->prepare($sql);
+  $statement->execute();
+  $aeropuertos = $statement->fetchAll(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,6 +82,27 @@
             </ul>
           </div>
         </nav>
+
+        <table class="table table-bordered" style="width: 75% !important; margin:3% auto;">
+        <tr>
+          <th>Código Aeropuerto</th>
+          <th>Nombre Aeropuerto</th>
+          <th>Ubicacion Aeropuerto</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+        <?php foreach($aeropuertos as $aeropuerto): ?>
+        <tr>
+          <td><?= $aeropuerto->cod; ?></td>
+          <td><?= $aeropuerto->nombre; ?></td>
+          <td><?= $aeropuerto->pais; ?></td>
+          <td> <button type="button" class="btn btn-warning"><a href="editaraeropuerto.php?editar=<?php echo $aeropuerto->cod ?>"> Editar </button>  </td></a>
+          <td><button type="button" class="btn btn-danger"><a onclick="return confirm('Esta seguro de eliminar el aeropuerto?')" href="php/eliminaraeropuerto.php?borrar=<?php echo $aeropuerto->cod ?>"> Eliminar </button>  </td></a>
+        </tr>
+        <?php endforeach; ?>
+      
+      
+      </table>
 
         <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

@@ -1,3 +1,21 @@
+<?php 
+  require 'php/conexion_sql_server.php';
+  require 'php/createvuelo.php';
+  $sql = "SELECT * FROM aeropuerto";
+  $statement = $conn->prepare($sql);
+  $statement->execute();
+  $aeropuertos = $statement->fetchAll(PDO::FETCH_OBJ);
+
+  $sql2 = "SELECT * FROM aviones";
+  $statement2 = $conn->prepare($sql2);
+  $statement2->execute();
+  $aviones = $statement2->fetchAll(PDO::FETCH_OBJ);
+
+  $sql3 = "SELECT * FROM embarque";
+  $statement3 = $conn->prepare($sql3);
+  $statement3->execute();
+  $embarques = $statement3->fetchAll(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,8 +122,9 @@
             <select name="aeropuertoSalida" 
               id="aeropuerto_salida" 
               class="form-control">
-              <option value="1" class="form-control">Aurora</option>
-              <option value="2" class="form-control">Otro Aeropuerto</option>
+              <?php foreach($aeropuertos as $aeropuerto): ?>
+                <option value="<?= $aeropuerto->cod; ?>" class="form-control"><?= $aeropuerto->nombre; ?></option>
+              <?php endforeach; ?>
             </select>
           </div>
           <div class="form-group">
@@ -113,17 +132,18 @@
             <select name="aeropuertoDestino" 
               id="aeropuerto_destino" 
               class="form-control">
-              <option value="1" class="form-control">MexicoAeropuerto</option>
-              <option value="2" class="form-control">DubaiAeropuerto</option>
-            </select>
+              <?php foreach($aeropuertos as $aeropuerto): ?>
+                <option value="<?= $aeropuerto->cod; ?>" class="form-control"><?= $aeropuerto->nombre; ?></option>
+              <?php endforeach; ?></select>
           </div>
           <div class="form-group">
-            <label for="Avion">Avion</label>
+            <label for="Avion">Código Avion</label>
             <select name="avion" 
               id="Avion" 
               class="form-control">
-              <option value="1" class="form-control">1</option>
-              <option value="2" class="form-control">2</option>
+              <?php foreach($aviones as $avion): ?>
+                <option value="<?= $avion->cod; ?>" class="form-control"><?= $avion->cod; ?></option>
+              <?php endforeach; ?></select>
             </select>
           </div>
           <div class="form-group">
@@ -131,8 +151,9 @@
             <select name="NumeroEmbarque" 
               id="embarque" 
               class="form-control">
-              <option value="1" class="form-control">1</option>
-              <option value="2" class="form-control">2</option>
+              <?php foreach($embarques as $embarque): ?>
+                <option value="<?= $embarque->cod; ?>" class="form-control"><?= $embarque->cod; ?></option>
+              <?php endforeach; ?></select>
             </select>
           </div>
           <div class="form-group">
