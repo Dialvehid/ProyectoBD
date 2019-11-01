@@ -17,9 +17,10 @@ nasientos int check(nasientos>0) not null
 
 create table embarque(
 cod int primary key not null identity(1,1),
-cui int not null,
+cui bigint not null,
 reseva bigint,
 constraint fk_res foreign key(reseva) references resevas(cod)
+constraint fk_cui foreign key(cui) references cliente(cui)
 )
 
 create table aviones(
