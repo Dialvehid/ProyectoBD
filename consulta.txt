@@ -48,17 +48,4 @@ constraint fk_avion foreign key(avion) references aviones(cod),
 constraint fkembar foreign key(embar) references embarque(cod)
 )
 
-select
-	c.nombres+' '+c.apellidos as nombre_completo, v.cod as cod_vuelo, asa.nombre as origen, alle.nombre as destino, v.fsale as salida, v.fllega as llegada
-from 
-	cliente as c
-inner join embarque as e
-on c.cui=e.cui
 
-inner join vuelo as v
-on e.cod=v.embar
-
-inner join aeropuerto as asa
-on v.aesale=asa.cod 
-inner join aeropuerto as alle
-on  v.aellega=alle.cod
