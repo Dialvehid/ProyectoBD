@@ -2,10 +2,13 @@
 Proyecto final de Base de Datos 1
 
 #### Integrantes del Grupo
-0900-15-549 Cristian Gerardo Hernandez Barrios
-0900-17-262 Diego Alejando Velasquez Hidalgo
-0900-17-1073 Denis Eduardo Bances Luna
-0900-09-8261 Rudy Orlando Subuyuj Medrano
+ 0900-15-549 Cristian Gerardo Hernandez Barrios
+ 
+ 0900-17-262 Diego Alejando Velasquez Hidalgo
+ 
+ 0900-17-1073 Denis Eduardo Bances Luna
+ 
+ 0900-09-8261 Rudy Orlando Subuyuj Medrano
 
 ### Tecnologías Utilizadas
 El proyecto fue utilizado con PHP como back-end, Bootstrap como Front-end y SqlServer como base de datos.
@@ -93,6 +96,30 @@ create proc Insertar_vuelo
 as
 begin
 insert into dbo.vuelo values (@fsale,@fllegada,@aesale,@aellega,@avion)
+end
+```
+
+-- El quinto procedimiento es:
+```sql
+create proc Insertar_embarque
+@cui bigint,
+@reserva bigint,
+@avion int,
+@costo decimal(5,2),
+@fecha date
+as
+begin
+insert into dbo.embarque values(@cui,@reserva,@avion,0,@costo,@fecha)
+end
+```
+
+--- El sexto procedimiento es:
+```sql
+alter proc Insertar_aviones
+@nplaza int
+as
+begin 
+insert into dbo.aviones values(@nplaza,@nplaza)
 end
 ```
 
