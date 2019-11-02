@@ -1,22 +1,13 @@
 ----------------------Vista-----------------------------------------
-create view  Reporte
+create view resumen
 as
-select 
-				concat(cli.nombres,
-				       cli.apellidos)as Nombre_Cliente, 
-				vuel.cod			 as Codigo_vuelo, 
-				re.nasientos		 as Asiento, 
-				ae.nombre			 as Origen,
-				ae.pais				 as Destino,
-				vuel.aellega		 as Salida,
-				vuel.aesale			 as Llegada
-
-				from 
-
-			   dbo.cliente as cli
-	inner join dbo.vuelo as vuel
-on			   cli.id = vuel.avion
-	inner join dbo.resevas as re
-on             re.nasientos = vuel.cod
-	inner join dbo.aeropuerto as ae
-on			   ae.cod = vuel.cod
+select c.nombres as NOMBRES, e.id_vuelo AS CODIGO_VUELO,e.cod AS NO_TICKET,a1.nombre AS AEROPUERTO_SALIDA,a2.nombre AS AEROPUERTO_LLEGADA,v.fsale AS FECHA_SALIDA,v.fllega AS FECHA_LLEGADA
+from embarque as e
+join cliente as c
+on c.cui=e.cui
+join vuelo as v
+on v.cod=e.id_vuelo
+join aeropuerto as a1
+on a1.cod=v.aesale
+join aeropuerto as a2
+on a2.cod=v.aellega

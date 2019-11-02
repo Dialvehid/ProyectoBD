@@ -52,3 +52,89 @@ constraint fk_idvuelo foreign key(id_vuelo) references vuelo(cod),
 constraint fk_res foreign key(reseva) references resevas(cod),
 constraint fk_cui foreign key(cui) references cliente(cui)
 )
+
+create trigger TR_ingreso
+on embarque
+after insert
+as
+begin
+set nocount on
+  update aviones
+  set ndisponibles= ndisponibles-1
+  where cod=(select v.avion
+    from vuelo as v
+   where v.cod=(select id_vuelo from inserted))
+
+if (select fechac
+  from inserted)=(select v.fsale
+                    from vuelo as v
+                    where v.cod=(select id_vuelo from inserted))
+    update embarque
+    set costo_f=costo-(costo*0.2)
+    where embarque.cod=(select cod from inserted)
+else
+    update embarque
+    set costo_f=costo
+    where embarque.cod=(select cod from inserted)
+end;
+
+--------------------------------insertar datos------------------------------
+
+create proc Insertar_aeropuerto
+@nombre nvarchar(30),
+@pais nvarchar(30)
+as
+begin
+insert into dbo.aeropuerto values (@nombre,@pais)
+end
+
+alter proc Insertar_aviones
+@nplaza int
+as
+begin 
+insert into dbo.aviones values(@nplaza,@nplaza)
+end
+
+create proc Insertar_cliente
+@cui bigint,
+@nombres nvarchar(50),
+@apellidos nvarchar(50),
+@direccion nvarchar(100),
+@tjtC nvarchar(20),
+@tel int
+as
+begin
+insert into dbo.cliente values(@cui,@nombres,@apellidos,@direccion,@tjtC,@tel) 
+end
+
+alter proc Insertar_embarque
+@cui bigint,
+@reserva bigint,
+@avion int,
+@costo decimal(5,2),
+@fecha date
+as
+begin
+insert into dbo.embarque values(@cui,@reserva,@avion,0,@costo,@fecha)
+end
+
+
+create proc Insertar_reservas
+@nasientos int
+as
+begin
+insert into dbo.resevas values (@nasientos)
+end
+
+create proc Insertar_vuelo
+@fsale date,
+@fllegada date,
+@aesale int,
+@aellega int,
+@avion int
+as
+begin
+insert into dbo.vuelo values (@fsale,@fllegada,@aesale,@aellega,@avion)
+end
+
+exec Insertar_aviones 100
