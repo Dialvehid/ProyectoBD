@@ -19,13 +19,19 @@ create table embarque(
 cod int primary key not null identity(1,1),
 cui bigint not null,
 reseva bigint,
-constraint fk_res foreign key(reseva) references resevas(cod)
+id_avion int,
+costo double not NULL,
+costo_f double,
+fechac date not null,
+constraint fk_idavion foreign key(id_avion) references aviones(id),
+constraint fk_res foreign key(reseva) references resevas(cod),
 constraint fk_cui foreign key(cui) references cliente(cui)
 )
 
 create table aviones(
 cod int primary key identity(1,1) not null,
-nplaza int not null
+nplaza int not null,
+ndisponibles int check(ndisponibles<=nplaza)
 )
 
 create table aeropuerto(
@@ -41,11 +47,9 @@ fllega date not null,
 aesale int not null,
 aellega int not null,
 avion int not null,
-embar int not null,
 constraint fk_salida foreign key(aesale) references aeropuerto(cod),
 constraint fk_entra foreign key(aellega) references aeropuerto(cod),
 constraint fk_avion foreign key(avion) references aviones(cod),
-constraint fkembar foreign key(embar) references embarque(cod)
 )
 
 

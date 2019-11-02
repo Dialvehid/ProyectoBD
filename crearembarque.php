@@ -88,7 +88,7 @@
             </ul>
           </div>
         </nav>
-      <!-- Formulario para registro de nuevo cliente -->
+      <!-- Formulario para registro de nuevo embarque-->
   <form method="POST" name="crearCliente" enctype="multipart/form-data">
           <h2 class="text-primary"> Nuevo Embarque</h2>  
           <div class="form-group">
