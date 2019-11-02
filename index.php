@@ -1,3 +1,10 @@
+<?php 
+  require 'php/conexion_sql_server.php';
+  $sql = "SELECT * FROM resumen";
+  $statement = $conn->prepare($sql);
+  $statement->execute();
+  $resumenes = $statement->fetchAll(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,6 +82,37 @@
             </ul>
           </div>
         </nav>
+        
+        <button onclick="exportTableToExcel('textTable')">EXCEL</button>
+        <button onclick="exportTableToPDF('textTable')">PDF</button>
+
+
+        <table class="table table-bordered" style="width: 75% !important; margin:3% auto;" id="textTable">
+        <tr>
+          <th>Nombres</th>
+          <th>Codigo de Vuelo</th>
+          <th>No Ticket</th>
+          <th>Aeropuerto Salida</th>
+          <th>Aeropuerto Llegada</th>
+          <th>Fecha Salida</th>
+          <th>Fecha Llegada</th>
+        </tr>
+        <?php foreach($resumenes as $resumen): ?>
+        <tr>
+          <td><?= $resumen->NOMBRES; ?></td>
+          <td><?= $resumen->CODIGO_VUELO; ?></td>
+          <td><?= $resumen->NO_TICKET; ?></td>
+          <td><?= $resumen->AEROPUERTO_SALIDA; ?></td>
+          <td><?= $resumen->AEROPUERTO_LLEGADA; ?></td>
+          <td><?= $resumen->FECHA_SALIDA; ?></td>
+          <td><?= $resumen->FECHA_LLEGADA; ?></td>
+          
+          </tr>
+        <?php endforeach; ?>
+      
+      
+      </table>
+
   </header>   
   <body>
 
@@ -82,5 +120,6 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="js/export.js"></script>
+ </body>
 </html>

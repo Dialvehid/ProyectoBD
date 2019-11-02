@@ -10,6 +10,11 @@
   $statement2 = $conn->prepare($sql2);
   $statement2->execute();
   $reservas = $statement2->fetchAll(PDO::FETCH_OBJ);
+
+  $sql3 = "SELECT cod FROM vuelo";
+  $statement3 = $conn->prepare($sql3);
+  $statement3->execute();
+  $vuelos = $statement3->fetchAll(PDO::FETCH_OBJ);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,7 +100,7 @@
             <label for="CampoCui">CUI</label><br>
             <select name="cui_cliente" id="cui" class="form-control">
             <?php foreach($clientes as $cliente): ?> 
-              <option value="<?= $cliente->id; ?>"><?= $cliente->cui; ?></option>
+              <option value="<?= $cliente->cui; ?>"><?= $cliente->cui; ?></option>
             <?php endforeach; ?> 
             </select>
           </div>
@@ -107,6 +112,35 @@
               <?php endforeach; ?>
             </select>
           </div>
+          <div class="form-group">
+            <label for="NombreCliente">Id Vuelo</label><br>
+            <select name="id_vuelo" id="reservacion" class="form-control" >
+              <?php foreach($vuelos as $vuelo): ?>
+                <option value="<?= $vuelo->cod; ?>"><?= $vuelo->cod; ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+        <div class="form-group">
+          <label for="campoPlazas">Precio</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="plazas" 
+            name="costo" 
+            placeholder="4" 
+            required
+          >
+      </div>
+      <div class="form-group">
+          <label for="campoPlazas">Fecha Compra</label>
+          <input 
+            type="date" 
+            class="form-control" 
+            id="plazas" 
+            name="fechacompra" 
+            required
+          >
+      </div>
           <div class="form-group">
               <!-- Boton para enviar los datos a la base de datos -->
               <a onclick="return confirm('Esta seguro de registrar el Embarque?')">
