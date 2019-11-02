@@ -7,16 +7,17 @@ begin
   set ndisponibles= ndisponibles-1
   where cod=(select v.avion
     from vuelo as v
-   where v.cod=inserted.id_vuelo)
+   where v.cod=(selec id_vuelo from inserted))
 
-if inserted.fecha=(select v.fsale
+if (select fecha
+  from inserted)=(select v.fsale
                     from vuelo as v
-                    where v.cod=inseted.id_vuelo)
+                    where v.cod=(select id_vuelo from inserted))
     update embarque
     set costo_f=costo-(costo*0.2)
-    where embarque.cod=inserted.cod
+    where embarque.cod=(select cod form inserted)
 else
     update embarque
     set costo_f=costo
-    where embarque.cod=inserted.cod
+    where embarque.cod=(select cod from inserted)
 end;
