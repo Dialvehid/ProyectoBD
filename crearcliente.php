@@ -99,6 +99,7 @@
               id="nombreCliente" 
               name="nombre_cliente" 
               placeholder="Cristian Gerardo"
+              required
             >
           </div>
           <div class="form-group">
@@ -108,7 +109,8 @@
               class="form-control" 
               id="apellidoCliente" 
               name="apellido_cliente" 
-              placeholder="Hernandez Barrios" 
+              placeholder="Hernandez Barrios"
+              required 
             >
           </div>
           <div class="form-group">
@@ -119,7 +121,8 @@
               id="direccionCliente" 
               name="direccion_cliente" 
               placeholder="Zona x, Avenida x, Ciudad x"
-            >
+              required
+              >
           </div>
           <div class="form-group">
             <label for="DireccionCliente">Tarjeta Crédito Cliente</label>
@@ -129,6 +132,7 @@
               id="tarjetaCliente" 
               name="tarjeta_cliente" 
               placeholder="4515458758156487"
+              required
             >
           </div>
           <div class="form-group">
@@ -139,6 +143,7 @@
               id="telefonoCliente" 
               name="telefono_cliente" 
               placeholder="35351567"
+              required
             >
           </div>
           <div class="form-group">

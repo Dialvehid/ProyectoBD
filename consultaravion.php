@@ -88,14 +88,14 @@
         <tr>
           <th>Código de Avión</th>
           <th>Número de Asientos</th>
-          <th>Editar</th>
+          <th>Asientos Disponibles</th>
           <th>Eliminar</th>
         </tr>
         <?php foreach($aviones as $avion): ?>
         <tr>
           <td><?= $avion->cod; ?></td>
           <td><?= $avion->nplaza; ?></td>
-          <td> <button type="button" class="btn btn-warning"><a href="editaravion.php?editar=<?php echo $avion->cod ?>"> Editar </button>  </td></a>
+          <td><?= $avion->ndisponibles; ?></td>
           <td><button type="button" class="btn btn-danger"><a onclick="return confirm('Esta seguro de eliminar la reserva?')" href="php/eliminaravion.php?borrar=<?php echo $avion->cod ?>"> Eliminar </button>  </td></a>
         </tr>
         <?php endforeach; ?>

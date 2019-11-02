@@ -146,16 +146,26 @@
               <?php endforeach; ?></select>
             </select>
           </div>
-          <div class="form-group">
-            <label for="NumeroEmbarque">No. Embarque</label>
-            <select name="NumeroEmbarque" 
-              id="embarque" 
-              class="form-control">
-              <?php foreach($embarques as $embarque): ?>
-                <option value="<?= $embarque->cod; ?>" class="form-control"><?= $embarque->cod; ?></option>
-              <?php endforeach; ?></select>
-            </select>
-          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
           <div class="form-group">
               <!-- Boton para enviar los datos a la base de datos -->
               <a onclick="return confirm('Esta seguro de registrar el vuelo?')">
