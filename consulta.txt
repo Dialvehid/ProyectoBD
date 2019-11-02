@@ -20,10 +20,10 @@ cod int primary key not null identity(1,1),
 cui bigint not null,
 reseva bigint,
 id_avion int,
-costo double not NULL,
-costo_f double,
+costo decimal(5,2) not null,
+costo_f decimal(5,2),
 fechac date not null,
-constraint fk_idavion foreign key(id_avion) references vuelos(avion),
+constraint fk_idavion foreign key(id_avion) references aviones(cod),
 constraint fk_res foreign key(reseva) references resevas(cod),
 constraint fk_cui foreign key(cui) references cliente(cui)
 )
@@ -31,7 +31,7 @@ constraint fk_cui foreign key(cui) references cliente(cui)
 create table aviones(
 cod int primary key identity(1,1) not null,
 nplaza int not null,
-ndisponibles int check(ndisponibles<=nplaza)
+ndisponibles int
 )
 
 create table aeropuerto(
