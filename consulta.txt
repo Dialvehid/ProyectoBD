@@ -1,4 +1,3 @@
-
 create table cliente(
 id bigint primary key not NULL identity(1,1),
 cui bigint not null unique,
@@ -13,19 +12,6 @@ constraint dpi check( cui <= 9999999999999 and cui >0)
 create table resevas(
 cod bigint primary key identity(1,1) not null,
 nasientos int check(nasientos>0) not null
-)
-
-create table embarque(
-cod int primary key not null identity(1,1),
-cui bigint not null,
-reseva bigint,
-id_avion int,
-costo decimal(5,2) not null,
-costo_f decimal(5,2),
-fechac date not null,
-constraint fk_idavion foreign key(id_avion) references aviones(cod),
-constraint fk_res foreign key(reseva) references resevas(cod),
-constraint fk_cui foreign key(cui) references cliente(cui)
 )
 
 create table aviones(
@@ -52,4 +38,15 @@ constraint fk_entra foreign key(aellega) references aeropuerto(cod),
 constraint fk_avion foreign key(avion) references aviones(cod),
 )
 
-
+create table embarque(
+cod int primary key not null identity(1,1),
+cui bigint not null,
+reseva bigint,
+id_vuelo int,
+costo decimal(5,2) not null,
+costo_f decimal(5,2),
+fechac date not null,
+constraint fk_idvuelo foreign key(id_vuelo) references vuelo(cod),
+constraint fk_res foreign key(reseva) references resevas(cod),
+constraint fk_cui foreign key(cui) references cliente(cui)
+)

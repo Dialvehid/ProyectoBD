@@ -15,7 +15,7 @@ create proc Insertar_aviones
 @nplaza int
 as
 begin 
-insert into dbo.aviones values(@cod,@nplaza)
+insert into dbo.aviones values(@cod,@nplaza,@nplaza)
 end
 
 create proc Insertar_cliente
@@ -34,10 +34,13 @@ end
 create proc Insertar_embarque
 @cod int,
 @cui int,
-@reserva bigint
+@reserva bigint,
+@avion,
+@costo,
+@fecha
 as
 begin
-insert into dbo.embarque values(@cod,@cui,@reserva)
+insert into dbo.embarque values(@cod,@cui,@reserva,@avion,@costo,#@fecha#)
 end
 
 
@@ -56,11 +59,10 @@ create proc Insertar_vuelo
 @fllegada date,
 @aesale int,
 @aellega int,
-@avion int,
-@embar int
+@avion int
 as
 begin
-insert into dbo.vuelo values (@cod,@fsale,@fllegada,@aesale,@aellega,@avion,@embar)
+insert into dbo.vuelo values (@cod,@fsale,@fllegada,@aesale,@aellega,@avion)
 end
 
 
