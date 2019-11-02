@@ -4,8 +4,8 @@ require ("conexion_sql_server.php");
 if(isset($_POST['plazas_avion'])){
     $plazas = $_POST['plazas_avion'];
 
-    $sql = "INSERT INTO aviones(nplaza)
-            VALUES('".$plazas."')";
+    $sql = "INSERT INTO aviones(nplaza, ndisponibles)
+            VALUES('".$plazas."','".$plazas."')";
     $statement = $conn->prepare($sql);
 
     if($statement->execute()){

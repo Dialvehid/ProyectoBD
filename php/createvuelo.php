@@ -9,10 +9,9 @@ $fecha_llegada = $_POST['fecha_llegada'];
 $aeropuerto_salida = $_POST['aeropuertoSalida'];
 $aeropuerto_llegada = $_POST['aeropuertoDestino'];
 $avion = $_POST['avion'];
-$embarque = $_POST['NumeroEmbarque'];
 
-$sql = "INSERT INTO vuelo(fsale, fllega, aesale, aellega, avion, embar) 
-        VALUES ('".$fecha_salida."', '".$fecha_llegada."','".$aeropuerto_salida."', '".$aeropuerto_llegada."', '".$avion."', '".$embarque."')";
+$sql = "INSERT INTO vuelo(fsale, fllega, aesale, aellega, avion) 
+        VALUES ('".$fecha_salida."', '".$fecha_llegada."','".$aeropuerto_salida."', '".$aeropuerto_llegada."', '".$avion."')";
 
 $statement = $conn->prepare($sql);
 
