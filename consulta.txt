@@ -1,3 +1,5 @@
+create database aeropuerto
+
 create table cliente(
 id bigint primary key not NULL identity(1,1),
 cui bigint not null unique,
