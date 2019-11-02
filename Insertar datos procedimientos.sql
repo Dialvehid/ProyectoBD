@@ -1,25 +1,21 @@
 --------------------------------insertar datos------------------------------
 
 create proc Insertar_aeropuerto
-@cod int,
 @nombre nvarchar(30),
 @pais nvarchar(30)
 as
 begin
-insert into dbo.aeropuerto values (@cod,@nombre,@pais)
+insert into dbo.aeropuerto values (@nombre,@pais)
 end
 
-
-create proc Insertar_aviones
-@cod int,
+alter proc Insertar_aviones
 @nplaza int
 as
 begin 
-insert into dbo.aviones values(@cod,@nplaza,@nplaza)
+insert into dbo.aviones values(@nplaza,@nplaza)
 end
 
 create proc Insertar_cliente
-@id bigint,
 @cui bigint,
 @nombres nvarchar(50),
 @apellidos nvarchar(50),
@@ -28,33 +24,29 @@ create proc Insertar_cliente
 @tel int
 as
 begin
-insert into dbo.cliente values(@id,@cui,@nombres,@apellidos,@direccion,@tjtC,@tel) 
+insert into dbo.cliente values(@cui,@nombres,@apellidos,@direccion,@tjtC,@tel) 
 end
 
-create proc Insertar_embarque
-@cod int,
-@cui int,
+alter proc Insertar_embarque
+@cui bigint,
 @reserva bigint,
-@avion,
-@costo,
-@fecha
+@avion int,
+@costo decimal(5,2),
+@fecha date
 as
 begin
-insert into dbo.embarque values(@cod,@cui,@reserva,@avion,@costo,#@fecha#)
+insert into dbo.embarque values(@cui,@reserva,@avion,0,@costo,@fecha)
 end
 
 
 create proc Insertar_reservas
-@cod bigint,
 @nasientos int
 as
 begin
-insert into dbo.resevas values (@cod,@nasientos)
+insert into dbo.resevas values (@nasientos)
 end
 
-
 create proc Insertar_vuelo
-@cod int,
 @fsale date,
 @fllegada date,
 @aesale int,
@@ -62,7 +54,7 @@ create proc Insertar_vuelo
 @avion int
 as
 begin
-insert into dbo.vuelo values (@cod,@fsale,@fllegada,@aesale,@aellega,@avion)
+insert into dbo.vuelo values (@fsale,@fllegada,@aesale,@aellega,@avion)
 end
 
 
