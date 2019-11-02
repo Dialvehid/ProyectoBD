@@ -23,7 +23,7 @@ id_avion int,
 costo double not NULL,
 costo_f double,
 fechac date not null,
-constraint fk_idavion foreign key(id_avion) references aviones(id),
+constraint fk_idavion foreign key(id_avion) references vuelos(avion),
 constraint fk_res foreign key(reseva) references resevas(cod),
 constraint fk_cui foreign key(cui) references cliente(cui)
 )
