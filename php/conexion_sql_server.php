@@ -1,5 +1,5 @@
 <?php 
-$servername = 'sql.freeasphost.net\MSSQL2016';
+$servername = 'ActuallyExistingServernamex)';
 try  
 {  
     $conn = new PDO( "sqlsrv:server=$servername ; Database=criger1398_aeropuerto", "criger1398", "prueba");  
